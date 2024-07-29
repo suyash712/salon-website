@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Listings - JustDeal</title>
+    <link rel="stylesheet" href="static/barbershop_list.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Shops List</h1>
+        <div id="shops-container"></div>
+    </div>
+    <script >document.addEventListener('DOMContentLoaded', function() {
+        const shopsContainer = document.getElementById('shops-container');
+        
+        // Sample data, replace with your actual data source
+        const shops = [
+            {
+                name: "Shop 1",
+                description: "A great place to buy amazing products.",
+                image: "shop1.jpg"
+            },
+            {
+                name: "Shop 2",
+                description: "Your one-stop shop for all needs.",
+                image: "shop2.jpg"
+            },
+            {
+                name: "Shop 3",
+                description: "Quality products at affordable prices.",
+                image: "shop3.jpg"
+            }
+        ];
+    
+        shops.forEach(shop => {
+            const shopCard = document.createElement('div');
+            shopCard.classList.add('shop-card');
+    
+            const shopImage = document.createElement('img');
+            shopImage.classList.add('shop-image');
+            
+            shopCard.appendChild(shopImage);
+    
+            const shopDetails = document.createElement('div');
+            shopDetails.classList.add('shop-details');
+    
+            const shopName = document.createElement('h2');
+            shopName.classList.add('shop-name');
+            shopName.textContent = shop.name;
+            shopDetails.appendChild(shopName);
+    
+            const shopDescription = document.createElement('p');
+            shopDescription.classList.add('shop-description');
+            shopDescription.textContent = shop.description;
+            shopDetails.appendChild(shopDescription);
+    
+            shopCard.appendChild(shopDetails);
+            shopsContainer.appendChild(shopCard);
+        });
+    });
+    </script>
+</body>
+</html>
