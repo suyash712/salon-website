@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Fruitables - Vegetable Website Template</title>
+    <title>StyleConnect - Salon Details</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -11,199 +11,148 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="static/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Template Stylesheet -->
-    <link href="static/css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Styles -->
     <style>
+        :root {
+            --primary: #FF69B4;
+            --secondary: #FFC0CB;
+            --light: #F8F9FA;
+            --dark: #212529;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+        }
+
         .topbar {
-            background-color: #007bff;
+            background-color: var(--primary);
             color: white;
             padding: 10px 0;
         }
-        .topbar a {
-            color: white;
-            text-decoration: none;
-        }
-        .topbar a:hover {
-            text-decoration: underline;
-        }
+
         .navbar-brand h1 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 800;
+            font-weight: 700;
+            color: var(--primary);
         }
+
         .page-header {
-            background-color: #343a40;
-            padding: 30px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center center no-repeat;
+            background-size: cover;
+            padding: 100px 0;
             color: white;
         }
-        .page-header h1 {
-            font-size: 2.5rem;
-        }
+
         .footer {
-            background-color: #212529;
-            color: #868e96;
+            background-color: var(--dark);
+            color: var(--light);
         }
-        .footer a {
-            color: #e9ecef;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
+
         .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
+            background-color: var(--primary);
+            border-color: var(--primary);
         }
+
         .btn-primary:hover {
-            background-color: #0056b3;
-            border-color: #004085;
+            background-color: #FF1493;
+            border-color: #FF1493;
         }
+
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #007bff;
+            background-color: var(--primary);
             color: white;
             border: none;
             width: 50px;
             height: 50px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
+
         .back-to-top:hover {
-            background-color: #0056b3;
+            background-color: #FF1493;
         }
-        .modal-content {
-            border-radius: 0;
-        }
-        .quantity .btn {
-            min-width: 38px;
-            min-height: 38px;
-        }
-        .footer-item {
-            margin-bottom: 30px;
-        }
+
         .service-table {
             width: 100%;
-            border-collapse: collapse;
+            border-collapse: separate;
+            border-spacing: 0 15px;
             margin-top: 30px;
         }
+
         .service-table thead {
-            background-color: #007bff;
+            background-color: var(--primary);
             color: white;
         }
+
         .service-table th, .service-table td {
-            padding: 12px;
+            padding: 15px;
             text-align: left;
-            border: 1px solid #ddd;
+            border: none;
         }
-        .service-table tr:nth-child(even) {
-            background-color: #f4f4f9;
+
+        .service-table tbody tr {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
         }
-        .service-table th {
-            font-weight: 600;
+
+        .service-table tbody tr:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .salon-image {
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .salon-image:hover {
+            transform: scale(1.05);
+        }
+
+        .rating {
+            color: #FFD700;
         }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid fixed-top">
-        <div class="container topbar d-none d-lg-block">
-            <div class="d-flex justify-content-between">
-                <div class="top-info">
-                    <small class="me-3"><i class="fas fa-map-marker-alt me-2"></i> <a href="#">123 Street, New York</a></small>
-                    <small class="me-3"><i class="fas fa-envelope me-2"></i><a href="#">Email@Example.com</a></small>
-                </div>
-                <div class="top-link">
-                    <a href="#"><small class="mx-2">Privacy Policy</small>/</a>
-                    <a href="#"><small class="mx-2">Terms of Use</small>/</a>
-                    <a href="#"><small class="ms-2">Sales and Refunds</small></a>
-                </div>
-            </div>
-        </div>
-        <div class="container px-0">
-            <nav class="navbar navbar-light bg-white navbar-expand-xl">
-                <a href="index.html" class="navbar-brand"><h1 class="text-primary">Fruitables</h1></a>
-                <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars text-primary"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav mx-auto">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="shop.html" class="nav-item nav-link">Shop</a>
-                        <a href="shop-detail.html" class="nav-item nav-link active">Shop Detail</a>
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                            <div class="dropdown-menu bg-secondary rounded-0">
-                                <a href="cart.html" class="dropdown-item">Cart</a>
-                                <a href="chackout.html" class="dropdown-item">Checkout</a>
-                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                                <a href="404.html" class="dropdown-item">404 Page</a>
-                            </div>
-                        </div>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                    </div>
-                    <div class="d-flex ms-3">
-                        <button class="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search text-primary"></i></button>
-                        <a href="#" class="position-relative me-4">
-                            <i class="fa fa-shopping-bag fa-2x"></i>
-                            <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
-                        </a>
-                        <a href="#">
-                            <i class="fas fa-user fa-2x"></i>
-                        </a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </div>
-
-    <!-- Modal Search Start -->
-    <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body d-flex align-items-center">
-                    <div class="input-group w-75 mx-auto d-flex">
-                        <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
-                        <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Modal Search End -->
+    <!-- Header and navigation remain the same -->
 
     <!-- Single Page Header start -->
     <div class="container-fluid page-header py-5">
-        <h1 class="text-center">Shop Detail</h1>
+        <h1 class="text-center display-4 fw-bold">Glamour Salon</h1>
         <ol class="breadcrumb justify-content-center mb-0">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-            <li class="breadcrumb-item active">Shop Detail</li>
+            <li class="breadcrumb-item"><a href="#">Salons</a></li>
+            <li class="breadcrumb-item active">Glamour Salon</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
-
-    <!-- Single Product Start -->
+                                  
+    <!-- Salon Details Start -->
     <div class="container-fluid py-5 mt-5">
         <div class="container py-5">
             <div class="row g-4 mb-5">
@@ -211,102 +160,111 @@
                     <div class="row g-4">
                         <div class="col-lg-6">
                             <div class="border rounded">
-                                <a href="#">
-                                    <img src="static/img/single-item.jpg" class="img-fluid rounded" alt="Product Image">
+                                <a href="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" data-lightbox="salon">
+                                    <img src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" class="img-fluid rounded salon-image" alt="Glamour Salon">
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h4 class="fw-bold mb-3">Salon Name</h4>
-                            <p class="mb-3">Location: Location Name</p>
-                            <h5 class="fw-bold mb-3">Rating (4.5)</h5>
-                            <div class="d-flex mb-4">
-                                <i class="fa fa-star text-secondary"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <i class="fa fa-star text-secondary"></i>
-                                <i class="fa fa-star text-secondary"></i>
+                            <h2 class="fw-bold mb-3">Glamour Salon</h2>
+                            <p class="mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i>123 Beauty Street, New York</p>
+                            <div class="d-flex mb-3">
+                                <h5 class="fw-bold me-3">Rating:</h5>
+                                <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                    <span class="ms-2 text-dark">(4.5)</span>
+                                </div>
                             </div>
-                            <h5 class="fw-bold mb-3">Price: $20</h5>
+                            <p class="mb-4">Experience luxury and style at Glamour Salon. Our expert stylists are dedicated to bringing out your natural beauty with cutting-edge techniques and premium products.</p>
                             <div class="d-flex mb-4">
-                                <button class="btn btn-primary me-2">Add to Cart</button>
-                                <button class="btn btn-outline-secondary">Buy Now</button>
+                                <a href="#" class="btn btn-primary me-2">Book Appointment</a>
+                                <a href="#" class="btn btn-outline-primary">Contact Us</a>
                             </div>
-                            <p>Product Description...</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xl-3">
-                    <div class="border rounded p-4">
-                        <h5 class="fw-bold mb-3">Related Products</h5>
+                    <div class="border rounded p-4 bg-white">
+                        <h4 class="fw-bold mb-3">Featured Services</h4>
                         <div class="d-flex mb-3">
-                            <img src="static/img/related-1.jpg" class="img-fluid rounded" alt="Related Product 1">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="Haircut">
                             <div class="ms-3">
-                                <h6 class="mb-1">Related Product 1</h6>
-                                <p class="mb-0 text-primary">$15</p>
+                                <h6 class="mb-1">Signature Haircut</h6>
+                                <p class="mb-0 text-primary">$50</p>
                             </div>
                         </div>
                         <div class="d-flex mb-3">
-                            <img src="static/img/related-2.jpg" class="img-fluid rounded" alt="Related Product 2">
+                            <img src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="Color">
                             <div class="ms-3">
-                                <h6 class="mb-1">Related Product 2</h6>
-                                <p class="mb-0 text-primary">$18</p>
+                                <h6 class="mb-1">Hair Coloring</h6>
+                                <p class="mb-0 text-primary">$80</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <h2 class="fw-bold mb-4">Our Services</h2>
+            <table class="service-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Duration</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Haircut</td>
+                        <td>Stylish haircut with personalized consultation.</td>
+                        <td>45 min</td>
+                        <td>$50</td>
+                    </tr>
+                    <tr>
+                        <td>Hair Coloring</td>
+                        <td>Professional hair coloring with premium products.</td>
+                        <td>2 hours</td>
+                        <td>$80</td>
+                    </tr>
+                    <tr>
+                        <td>Facial</td>
+                        <td>Luxurious facial treatment with organic products.</td>
+                        <td>1 hour</td>
+                        <td>$70</td>
+                    </tr>
+                    <tr>
+                        <td>Manicure & Pedicure</td>
+                        <td>Complete hand and foot care with massage.</td>
+                        <td>1.5 hours</td>
+                        <td>$60</td>
+                    </tr>
+                    <tr>
+                        <td>Hair Styling</td>
+                        <td>Professional styling for any occasion.</td>
+                        <td>45 min</td>
+                        <td>$40</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <h2 class="my-4">Salon Services</h2>
-                    <table class="service-table">
-                        <thead>
-                            <tr>
-                                <th>Service</th>
-                                <th>Description</th>
-                                <th>Duration</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Haircut</td>
-                                <td>Stylish haircut with personalized consultation.</td>
-                                <td>30 min</td>
-                                <td>$25</td>
-                            </tr>
-                            <tr>
-                                <td>Shampoo & Conditioning</td>
-                                <td>Deep cleaning and conditioning treatment.</td>
-                                <td>20 min</td>
-                                <td>$15</td>
-                            </tr>
-                            <tr>
-                                <td>Facial</td>
-                                <td>Refreshing facial treatment with mask and massage.</td>
-                                <td>45 min</td>
-                                <td>$40</td>
-                            </tr>
-                            <tr>
-                                <td>Manicure</td>
-                                <td>Basic manicure with nail polish.</td>
-                                <td>30 min</td>
-                                <td>$20</td>
-                            </tr>
-                            <tr>
-                                <td>Pedicure</td>
-                                <td>Relaxing pedicure with exfoliation and nail polish.</td>
-                                <td>45 min</td>
-                                <td>$30</td>
-                            </tr>
-                        </tbody>
-                    </table>
-    <!-- Single Product End -->
+    <!-- Salon Details End -->
+
+    <!-- Footer and scripts remain the same -->
+
+
 
     <!-- Footer Start -->
     <footer class="footer py-4">
         <div class="container">
+
             <div class="row">
+
                 <div class="col-md-3 footer-item">
                     <h5 class="text-light mb-3">Contact</h5>
                     <ul class="list-unstyled">
@@ -315,6 +273,7 @@
                         <li><a href="#" class="text-light">+123 456 7890</a></li>
                     </ul>
                 </div>
+
                 <div class="col-md-3 footer-item">
                     <h5 class="text-light mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
@@ -324,6 +283,7 @@
                         <li><a href="#" class="text-light">About</a></li>
                     </ul>
                 </div>
+
                 <div class="col-md-3 footer-item">
                     <h5 class="text-light mb-3">Newsletter</h5>
                     <form action="#" method="post">
@@ -333,6 +293,7 @@
                         </div>
                     </form>
                 </div>
+
                 <div class="col-md-3 footer-item">
                     <h5 class="text-light mb-3">Follow Us</h5>
                     <a href="#" class="text-light me-3"><i class="fab fa-facebook-f"></i></a>
