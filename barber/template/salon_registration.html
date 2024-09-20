@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Registration</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-step {
+            display: none;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .form-step-active {
+            display: block;
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        input[type="text"].service-name,
+        input[type="number"].service-price {
+            width: calc(100% - 20px); /* Subtract padding */
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #addService {
+            background-color: #28a745;
+            margin-top: 0;
+        }
+
+        #addService:hover {
+            background-color: #218838;
+        }
+
+        .btn-remove-service {
+            background-color: #dc3545;
+            margin-left: 10px;
+        }
+
+        .btn-remove-service:hover {
+            background-color: #c82333;
+        }
+
+        .btn-prev, .btn-next {
+            background-color: #17a2b8;
+        }
+
+        .btn-prev:hover, .btn-next:hover {
+            background-color: #138496;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="container" >
+        <form id="salonForm">
+            <!-- Step 1: Personal Information -->
+            <div class="form-step form-step-active">
+                <h2>Personal Information</h2>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="surname">Surname:</label>
+                <input type="text" id="surname" name="surname" required>
+                
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" required>
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" required>
+                
+                <label for="phone">Phone No:</label>
+                <input type="tel" id="phone" name="phone" required>
+                
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required>
+                
+                <button type="button" class="btn-next">Next</button>
+            </div>
+            
+            <!-- Step 2: Salon Information -->
+            <div class="form-step">
+                <h2>Salon Information</h2>
+                <label for="salonName">Salon Name:</label>
+                <input type="text" id="salonName" name="salonName" required>
+                
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
+                
+                <label for="salonAddress">Address:</label>
+                <input type="text" id="salonAddress" name="salonAddress" required>
+                
+                <label for="barbers">Number of Barbers:</label>
+                <input type="number" id="barbers" name="barbers" required>
+                
+                <label for="chairs">Number of Chairs:</label>
+                <input type="number" id="chairs" name="chairs" required>
+                
+                <label for="openTime">Opening Time:</label>
+                <input type="time" id="openTime" name="openTime" required>
+                
+                <label for="closeTime">Closing Time:</label>
+                <input type="time" id="closeTime" name="closeTime" required>
+                
+                <button type="button" class="btn-prev">Previous</button>
+                <button type="button" class="btn-next">Next</button>
+            </div>
+            
+            <!-- Step 3: Salon Services -->
+            <div class="form-step" >
+                <h2>Salon Services</h2>
+                <table id="servicesTable">
+                    <thead>
+                        <tr>
+                            <th>Service Name</th>
+                            <th>Service Description</th>
+                            <th>Service Price</th>
+                            <th>Service Duration</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="service">
+                            <td><input type="text" name="serviceName[]" class="service-name" required></td>
+                            <td><input type="text" name="serviceDescription[]" class="service-Description" required></td>
+                            <td><input type="number" name="servicePrice[]" class="service-price" required></td>
+                            <td><input type="number" name="serviceDuration[]" class="service-Duration" required></td>
+                            <td><button type="button" class="btn-remove-service">Remove</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <button type="button" id="addService">Add Another Service</button>
+                
+                <button type="button" class="btn-prev">Previous</button>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <div id="successMessage" class="success-message">
+        <h2>Setup Complete!</h2>
+        <p>Your salon has been successfully registered.</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const formSteps = document.querySelectorAll('.form-step');
+            const nextBtns = document.querySelectorAll('.btn-next');
+            const prevBtns = document.querySelectorAll('.btn-prev');
+            const form = document.getElementById('salonForm');
+            const successMessage = document.getElementById('successMessage');
+            let formStepsNum = 0;
+
+            nextBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    formSteps[formStepsNum].classList.remove('form-step-active');
+                    formStepsNum++;
+                    formSteps[formStepsNum].classList.add('form-step-active');
+                });
+            });
+
+            prevBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    formSteps[formStepsNum].classList.remove('form-step-active');
+                    formStepsNum--;
+                    formSteps[formStepsNum].classList.add('form-step-active');
+                });
+            });
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                form.style.display = 'none';
+                successMessage.style.display = 'block';
+            });
+
+            const addServiceBtn = document.getElementById('addService');
+            const servicesTable = document.getElementById('servicesTable').getElementsByTagName('tbody')[0];
+
+            addServiceBtn.addEventListener('click', () => {
+                const newRow = servicesTable.insertRow();
+                newRow.classList.add('service');
+                
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+                const cell5 = newRow.insertCell(4);
+
+                cell1.innerHTML = '<input type="text" name="serviceName[]" class="service-name" required>';
+                cell2.innerHTML = '<input type="text" name="serviceDescription[]" class="service-Description" required>';
+                cell3.innerHTML = '<input type="number" name="servicePrice[]" class="service-price" required>';
+                cell4.innerHTML = '<input type="integer" name="serviceDuration[]" class="service-Duration" required>';
+                cell5.innerHTML = '<button type="button" class="btn-remove-service">Remove</button>';
+
+                const removeServiceBtns = document.querySelectorAll('.btn-remove-service');
+                removeServiceBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.target.parentNode.parentNode.remove();
+                    });
+                });
+            });
+
+            const removeServiceBtns = document.querySelectorAll('.btn-remove-service');
+            removeServiceBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.target.parentNode.parentNode.remove();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

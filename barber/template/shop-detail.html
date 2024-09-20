@@ -143,11 +143,11 @@
 
     <!-- Single Page Header start -->
     <div class="container-fluid page-header py-5">
-        <h1 class="text-center display-4 fw-bold">Glamour Salon</h1>
+        <h1 class="text-center display-4 fw-bold">{{salon.salon_name}}</h1>
         <ol class="breadcrumb justify-content-center mb-0">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Salons</a></li>
-            <li class="breadcrumb-item active">Glamour Salon</li>
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/barbershop_list">Salons</a></li>
+            <li class="breadcrumb-item active">{{salon.salon_name}}</li>
         </ol>
     </div>
     <!-- Single Page Header End -->
@@ -166,8 +166,8 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h2 class="fw-bold mb-3">Glamour Salon</h2>
-                            <p class="mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i>123 Beauty Street, New York</p>
+                            <h2 class="fw-bold mb-3">{{salon.salon_name}}</h2>
+                            <p class="mb-3"><i class="fas fa-map-marker-alt me-2 text-primary"></i>{{salon.location}}</p>
                             <div class="d-flex mb-3">
                                 <h5 class="fw-bold me-3">Rating:</h5>
                                 <div class="rating">
@@ -179,7 +179,7 @@
                                     <span class="ms-2 text-dark">(4.5)</span>
                                 </div>
                             </div>
-                            <p class="mb-4">Experience luxury and style at Glamour Salon. Our expert stylists are dedicated to bringing out your natural beauty with cutting-edge techniques and premium products.</p>
+                            <p class="mb-4">{{salon.description}}</p>
                             <div class="d-flex mb-4">
                                 <a href="#" class="btn btn-primary me-2">Book Appointment</a>
                                 <a href="#" class="btn btn-outline-primary">Contact Us</a>
@@ -191,7 +191,7 @@
                     <div class="border rounded p-4 bg-white">
                         <h4 class="fw-bold mb-3">Featured Services</h4>
                         <div class="d-flex mb-3">
-                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="Haircut">
+                            <img src=" " class="img-fluid rounded" style="width: 80px; height: 80px; object-fit: cover;" alt="Haircut">
                             <div class="ms-3">
                                 <h6 class="mb-1">Signature Haircut</h6>
                                 <p class="mb-0 text-primary">$50</p>
@@ -219,12 +219,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for service in services %}
                     <tr>
-                        <td>Haircut</td>
-                        <td>Stylish haircut with personalized consultation.</td>
-                        <td>45 min</td>
-                        <td>$50</td>
+                        <td>{{ service.service_name }}</td>
+                        <td>{{ service.description }}</td>
+                        <td>{{ service.duration }} mins</td>
+                        <td>${{ service.price }}</td>
                     </tr>
+                    {% endfor %}
                     <tr>
                         <td>Hair Coloring</td>
                         <td>Professional hair coloring with premium products.</td>

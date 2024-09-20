@@ -2,39 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Salon Registration</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="static/login.css">
+    <title>Login & Registration</title>
 </head>
 <body>
-    <div class="login-container">
-        <form method="post" >
-            {% csrf_token %}
-            <h2>Login to Your Account</h2>
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" required>
+    <div class="container">
+        <div class="form-container">
+            <div class="form-box login" id="login-form">
+                <h2>Login</h2>
+                <form>
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bx-user'></i></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bx-lock'></i></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" class="btn">Login</button>
+                    <div class="switch">
+                        <p>Don't have an account? <a href="#" onclick="showRegister()">Sign Up</a></p>
+                    </div>
+                </form>
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" name="password" id="password" required>
+
+            <div class="form-box register" id="register-form">
+                <h2>Register</h2>
+                <form>
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bx-user'></i></span>
+                        <input type="text" required>
+                        <label>Username</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bx-envelope'></i></span>
+                        <input type="email" required>
+                        <label>Email</label>
+                    </div>
+                    <div class="input-box">
+                        <span class="icon"><i class='bx bx-lock'></i></span>
+                        <input type="password" required>
+                        <label>Password</label>
+                    </div>
+                    <button type="submit" class="btn">Register</button>
+                    <div class="switch">
+                        <p>Already have an account? <a href="#" onclick="showLogin()">Login</a></p>
+                    </div>
+                </form>
             </div>
-            <button type="submit">Login</button>
-        </form>
+        </div>
     </div>
-    
-    <script>document.addEventListener('DOMContentLoaded', function() {
-        const form = document.querySelector('form');
-        form.addEventListener('submit', function(event) {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-    
-            if (!username || !password) {
-                alert('Please fill in both fields.');
-                event.preventDefault();
-            }
-        });
-    });
+
+    <script>
+        function showLogin() {
+            document.getElementById("login-form").style.display = "block";
+            document.getElementById("register-form").style.display = "none";
+        }
+
+        function showRegister() {
+            document.getElementById("login-form").style.display = "none";
+            document.getElementById("register-form").style.display = "block";
+        }
+
+        // Initialize the forms display state
+        showLogin();
     </script>
 </body>
 </html>

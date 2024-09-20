@@ -20,7 +20,13 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.login),
-    path('barbershop_list',views.barbershop_list,name='barbershop_list'),
-    path('shopdetails',views.barbershop)
+    path('login',views.login),
+    path('home',views.home),
+    path('  ',views.barbershop_list,name='barbershop_list'),
+    path('shopdetails',views.barbershop),
+    path('salon/<int:pk>/', views.salon_detail, name='salon_detail'),
+    path('',views.dashboard),
+    path('salon_registration',views.salon_registration)
+
+    
 ]
