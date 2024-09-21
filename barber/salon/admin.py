@@ -1,14 +1,14 @@
 from django.contrib import admin
-from salon.models import salon,Service,salon_head
+from salon.models import salon,Service1,salon_head
 # Register your models here.
 
 class salon(admin.ModelAdmin):
-    list_display=('salon_name','location','ratings','description','reviews','image')    
+    list_display=('salon_head ','salon_name','location','address','ratings','description','reviews','image','no_of_barbers','no_of_chairs','opening_time','closing_time')    
     admin.site.register(salon)
 
 class service(admin.ModelAdmin):
     list_display=('salon','service_name','description','price','duration')
-    admin.site.register(Service)
+    admin.site.register(Service1)
 
 class salon_head(admin.ModelAdmin):
     list_display=('name','surname','age','address','phone_no','date_of_birth')

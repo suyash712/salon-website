@@ -196,7 +196,7 @@
                         {% for items in salon %}
                         <div class="col-md-6 col-lg-4">
                             <div class="salon-card">
-                                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80" class="card-img-top" alt="Salon Image">
+                                <img src="{{ items.image.url }}" class="card-img-top" alt="Salon Image">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ items.salon_name }}</h5>
                                     <p class="card-text">{{ items.description }}</p>

@@ -171,13 +171,23 @@
                             <div class="d-flex mb-3">
                                 <h5 class="fw-bold me-3">Rating:</h5>
                                 <div class="rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                    <span class="ms-2 text-dark">(4.5)</span>
+                                    {% with salon.ratings|floatformat:1 as rating %}
+                                        {% for i in '12345' %}
+                                            {% if forloop.counter <= rating|floatformat:0 %}
+                                                <i class="fas fa-star"></i> <!-- Full star -->
+                                            {% elif forloop.counter == rating|add:'1'|floatformat:0 and rating|floatformat:1 != rating|floatformat:0 %}
+                                                <i class="fas fa-star-half-alt"></i> <!-- Half star -->
+                                            {% else %}
+                                                <i class="far fa-star"></i> <!-- Empty star -->
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endwith %}
+                                    <span class="ms-2 text-dark">({{ salon.ratings }})</span>
                                 </div>
+                                
+                                
+x                                
+                                
                             </div>
                             <p class="mb-4">{{salon.description}}</p>
                             <div class="d-flex mb-4">
@@ -227,30 +237,7 @@
                         <td>${{ service.price }}</td>
                     </tr>
                     {% endfor %}
-                    <tr>
-                        <td>Hair Coloring</td>
-                        <td>Professional hair coloring with premium products.</td>
-                        <td>2 hours</td>
-                        <td>$80</td>
-                    </tr>
-                    <tr>
-                        <td>Facial</td>
-                        <td>Luxurious facial treatment with organic products.</td>
-                        <td>1 hour</td>
-                        <td>$70</td>
-                    </tr>
-                    <tr>
-                        <td>Manicure & Pedicure</td>
-                        <td>Complete hand and foot care with massage.</td>
-                        <td>1.5 hours</td>
-                        <td>$60</td>
-                    </tr>
-                    <tr>
-                        <td>Hair Styling</td>
-                        <td>Professional styling for any occasion.</td>
-                        <td>45 min</td>
-                        <td>$40</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>

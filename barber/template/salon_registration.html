@@ -21,11 +21,12 @@
             padding: 30px;
             border-radius: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
+            max-width: 700px;
             width: 100%;
             position: relative;
             overflow: hidden;
         }
+        
 
         .form-step {
             display: none;
@@ -131,27 +132,28 @@
 <body>
     
     <div class="container" >
-        <form id="salonForm">
+        <form id="salonForm" action="{% url 'register_salon' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
             <!-- Step 1: Personal Information -->
             <div class="form-step form-step-active">
                 <h2>Personal Information</h2>
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" name="name" >
                 
                 <label for="surname">Surname:</label>
-                <input type="text" id="surname" name="surname" required>
+                <input type="text" id="surname" name="surname" >
                 
                 <label for="age">Age:</label>
                 <input type="number" id="age" name="age" required>
                 
                 <label for="address">Address:</label>
-                <input type="text" id="address" name="address" required>
+                <input type="text" id="address" name="address" >
                 
                 <label for="phone">Phone No:</label>
-                <input type="tel" id="phone" name="phone" required>
+                <input type="tel" id="phone" name="phone_no" >
                 
                 <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob" name="dob" required>
+                <input type="date" id="dob" name="date_of_birth" >
                 
                 <button type="button" class="btn-next">Next</button>
             </div>
@@ -160,25 +162,31 @@
             <div class="form-step">
                 <h2>Salon Information</h2>
                 <label for="salonName">Salon Name:</label>
-                <input type="text" id="salonName" name="salonName" required>
+                <input type="text" id="salonName" name="salonName" >
                 
                 <label for="city">City:</label>
-                <input type="text" id="city" name="city" required>
+                <input type="text" id="city" name="location" >
                 
                 <label for="salonAddress">Address:</label>
-                <input type="text" id="salonAddress" name="salonAddress" required>
+                <input type="text" id="salonAddress" name="address" >
+
+                <label for="salonAddress">description:</label>
+                <input type="text" id="salonAddress" name="description" >
+
+                <label for="salonAddress">image::</label>
+                <input type="file" id="salonAddress" name="image" >
                 
                 <label for="barbers">Number of Barbers:</label>
-                <input type="number" id="barbers" name="barbers" required>
+                <input type="number" id="barbers" name="no_of_barbers" >
                 
                 <label for="chairs">Number of Chairs:</label>
-                <input type="number" id="chairs" name="chairs" required>
+                <input type="number" id="chairs" name="no_of_chairs" >
                 
                 <label for="openTime">Opening Time:</label>
-                <input type="time" id="openTime" name="openTime" required>
+                <input type="time" id="openTime" name="opening_time" >
                 
                 <label for="closeTime">Closing Time:</label>
-                <input type="time" id="closeTime" name="closeTime" required>
+                <input type="time" id="closeTime" name="closing_time" >
                 
                 <button type="button" class="btn-prev">Previous</button>
                 <button type="button" class="btn-next">Next</button>
@@ -199,10 +207,10 @@
                     </thead>
                     <tbody>
                         <tr class="service">
-                            <td><input type="text" name="serviceName[]" class="service-name" required></td>
-                            <td><input type="text" name="serviceDescription[]" class="service-Description" required></td>
-                            <td><input type="number" name="servicePrice[]" class="service-price" required></td>
-                            <td><input type="number" name="serviceDuration[]" class="service-Duration" required></td>
+                            <td><input type="text" name="serviceName[]" class="service-name" ></td>
+                            <td><input type="text" name="serviceDescription[]" class="service-Description" ></td>
+                            <td><input type="number" name="servicePrice[]" class="service-price" ></td>
+                            <td><input type="number" name="serviceDuration[]" class="service-Duration" ></td>
                             <td><button type="button" class="btn-remove-service">Remove</button></td>
                         </tr>
                     </tbody>
@@ -216,10 +224,7 @@
         </form>
     </div>
 
-    <div id="successMessage" class="success-message">
-        <h2>Setup Complete!</h2>
-        <p>Your salon has been successfully registered.</p>
-    </div>
+    
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
@@ -246,11 +251,7 @@
                 });
             });
 
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                form.style.display = 'none';
-                successMessage.style.display = 'block';
-            });
+            
 
             const addServiceBtn = document.getElementById('addService');
             const servicesTable = document.getElementById('servicesTable').getElementsByTagName('tbody')[0];
