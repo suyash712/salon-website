@@ -29,7 +29,9 @@ urlpatterns = [
     path('salon/<int:pk>/', views.salon_detail, name='salon_detail'),
     path('dashboard',views.dashboard),
     path('salon_registration',views.salon_registration),
-    path('register_salon',views.register_salon,name='register_salon')
+    path('register_salon',views.register_salon,name='register_salon'),
+    path('login1',views.login1,name='login1'),
+    path('register',views.register,name='register')
 
     
 ]

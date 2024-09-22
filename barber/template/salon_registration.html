@@ -133,7 +133,7 @@
     
     <div class="container" >
         <form id="salonForm" action="{% url 'register_salon' %}" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+            {% csrf_token %}
             <!-- Step 1: Personal Information -->
             <div class="form-step form-step-active">
                 <h2>Personal Information</h2>

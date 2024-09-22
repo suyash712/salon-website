@@ -1,5 +1,6 @@
 from django.contrib import admin
-from salon.models import salon,Service1,salon_head
+from salon.models import salon,Service1,salon_head,registration
+
 # Register your models here.
 
 class salon(admin.ModelAdmin):
@@ -13,3 +14,7 @@ class service(admin.ModelAdmin):
 class salon_head(admin.ModelAdmin):
     list_display=('name','surname','age','address','phone_no','date_of_birth')
     admin.site.register(salon_head)
+
+class registration(admin.ModelAdmin):
+    list_display=('username','email','password')
+    admin.site.register(registration)    

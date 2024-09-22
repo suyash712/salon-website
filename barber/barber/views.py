@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404 
 from django.http import HttpResponse
-from salon.models import salon,Service1,salon_head
+from salon.models import salon,Service1,salon_head,registration
 
 
 def home(request):
@@ -26,7 +26,46 @@ def dashboard(request):
     return render(request, 'salon_dashboard.html')
 
 def login(request):
+
     return render(request,'login.html')
+
+def register(request):
+    if request.method == 'POST':
+        username=request.POST.get('username')
+        email=request.POST.get('email')
+        password=request.POST.get('password')
+    
+        registration_info=registration(
+           username=username,
+           email=email,
+           password=password
+        )
+        registration_info.save()
+    
+        return redirect(login)
+    return redirect(home)
+
+from django.contrib import messages
+def login1(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            # Check if the user exists in the custom registration table
+            user = registration.objects.get(username=username, password=password)
+
+            # If user is found, you can set up a session or redirect
+            request.session['username'] = user.username  # Set session for logged-in user
+            return redirect(home)  # Redirect to home page or dashboard after login
+        except registration.DoesNotExist:
+            # User does not exist or credentials are invalid
+            messages.error(request, 'Invalid username or password')
+            return redirect(login)  # Stay on login page
+
+    return render(request, 'login.html')     
+     
+
 
 def salon_registration(request):
     return render(request,'salon_registration.html')
