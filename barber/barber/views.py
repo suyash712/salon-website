@@ -46,24 +46,29 @@ def register(request):
     return redirect(home)
 
 from django.contrib import messages
+from django.shortcuts import redirect, render
+from django.contrib import messages
+from salon.models import registration  # Make sure to import the correct model
+
 def login1(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
 
-        try:
-            # Check if the user exists in the custom registration table
-            user = registration.objects.get(username=username, password=password)
+        # Check if the user exists in the custom registration table
+        user = registration.objects.filter(username=username, password=password).first()
 
-            # If user is found, you can set up a session or redirect
+        if user:
+            # If user is found, set up a session or redirect
             request.session['username'] = user.username  # Set session for logged-in user
             return redirect(home)  # Redirect to home page or dashboard after login
-        except registration.DoesNotExist:
+        else:
             # User does not exist or credentials are invalid
             messages.error(request, 'Invalid username or password')
             return redirect(login)  # Stay on login page
 
-    return render(request, 'login.html')     
+    return render(request, 'login.html')
+     
      
 
 
