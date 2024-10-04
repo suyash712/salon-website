@@ -30,8 +30,14 @@ class Service1(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     duration = models.IntegerField()
-
+type=(
+    ('customer','customer'),
+    ('admin','admin')
+)
 class registration(models.Model):
     username =models.CharField(max_length=200)
     email = models.EmailField()
     password =models.CharField(max_length=200)
+    type=models.CharField(max_length=200,choices=type,default='customer')
+
+    
